@@ -245,7 +245,17 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px
 
 /* reflet animé optionnel sur une marque/logo : conteneur qui clippe un ::after (fonctionne pas sur <img> seul) */
 .splash__mark { position: relative; display: inline-block; overflow: hidden; border-radius: var(--radius-md); line-height: 0; }
-.splash__mark img { position: relative; }
+.splash__mark img {
+  position: relative;
+  filter:
+    drop-shadow(0 0 14px color-mix(in srgb, var(--accent) 75%, transparent))
+    drop-shadow(0 0 34px color-mix(in srgb, var(--accent-b, var(--accent)) 55%, transparent))
+    drop-shadow(0 0 60px color-mix(in srgb, var(--accent) 30%, transparent));
+  /* remplace ET reprend l'animation d'entrée de .splash img (une seule déclaration `animation` gagne, elles ne fusionnent pas) */
+  animation: splashIn 0.85s cubic-bezier(0.22, 1.4, 0.36, 1) forwards, splashHalo 2.6s ease-in-out infinite;
+}
+@keyframes splashHalo { 0%, 100% { filter: drop-shadow(0 0 14px color-mix(in srgb, var(--accent) 75%, transparent)) drop-shadow(0 0 34px color-mix(in srgb, var(--accent-b, var(--accent)) 55%, transparent)) drop-shadow(0 0 60px color-mix(in srgb, var(--accent) 30%, transparent)); } 50% { filter: drop-shadow(0 0 22px color-mix(in srgb, var(--accent) 85%, transparent)) drop-shadow(0 0 48px color-mix(in srgb, var(--accent-b, var(--accent)) 65%, transparent)) drop-shadow(0 0 80px color-mix(in srgb, var(--accent) 38%, transparent)); } }
+@media (prefers-reduced-motion: reduce) { .splash__mark img { animation: none; opacity: 1; } }
 .splash__mark::after {
   content: ""; position: absolute; top: -70%; bottom: -70%; left: 0; width: 45%;
   background: linear-gradient(115deg, transparent, color-mix(in srgb, var(--accent-2) 85%, white) 45%, color-mix(in srgb, var(--accent-b, var(--accent-2)) 85%, white) 55%, transparent);
