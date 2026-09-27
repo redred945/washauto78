@@ -1,0 +1,22 @@
+{
+  "port": 4930,
+  "preset": "ecume-nuit",
+  "sections": [
+    "compare/before-after",
+    "contact/form",
+    "cta/band",
+    "fab/call",
+    "faq/accordion",
+    "features/grid",
+    "footer/columns",
+    "gallery/grid",
+    "header/pill",
+    "hero/media",
+    "legal/mentions",
+    "page/hero",
+    "pricing/lists",
+    "services/bento",
+    "stats/strip"
+  ],
+  "generatedAt": "2026-09-27T16:51:21.682Z"
+}

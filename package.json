@@ -1,0 +1,10 @@
+{
+  "name": "wash-auto-78",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site statique Wash Auto 78 — généré par studio-master. Ne pas relancer « regen » depuis Vercel : le HTML est commité.",
+  "scripts": {
+    "regen": "node ../studio-master/generator/build.mjs site.config.mjs",
+    "start": "npx serve -l 4930 ."
+  }
+}
