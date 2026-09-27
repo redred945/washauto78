@@ -645,19 +645,23 @@ a.cs__v:hover { color: var(--accent-2); }
 mark.todo { background: var(--accent-b-soft); color: var(--accent-b-2); padding: 0.05em 0.45em; border-radius: 4px; font-size: 0.9em; }
 
 
-    .bar__badge, .foot__brand-mark .bar__badge { position: relative; overflow: hidden; }
-    .bar__badge::after, .foot__brand-mark .bar__badge::after {
-      content: ""; position: absolute; top: -70%; bottom: -70%; left: 0; width: 60%;
-      background: linear-gradient(115deg, transparent, color-mix(in srgb, var(--accent-2) 85%, white) 45%, color-mix(in srgb, var(--accent-b) 85%, white) 55%, transparent);
-      mix-blend-mode: overlay; animation: shineSweep 2.6s ease-in-out infinite; animation-delay: 1.4s;
+    /* logo détouré (fond transparent) : le reflet est masqué par sa propre silhouette au lieu d'un bloc rectangulaire */
+    .bar__badge, .foot__brand-mark .bar__badge, .splash__mark { position: relative; overflow: visible; }
+    .bar__badge::after, .foot__brand-mark .bar__badge::after, .splash__mark::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(115deg, transparent, color-mix(in srgb, var(--accent-2) 90%, white) 45%, color-mix(in srgb, var(--accent-b) 90%, white) 55%, transparent);
+      background-size: 260% 260%; background-position: -80% 0;
+      -webkit-mask-image: url('img/logo.png'); mask-image: url('img/logo.png');
+      -webkit-mask-size: contain; mask-size: contain;
+      -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+      -webkit-mask-position: center; mask-position: center;
+      animation: shineSweepBg 2.6s ease-in-out infinite; animation-delay: 1.4s;
     }
-    @media (prefers-reduced-motion: reduce) { .bar__badge::after, .foot__brand-mark .bar__badge::after { animation: none; display: none; } }
+    @keyframes shineSweepBg { 0%, 15% { background-position: -80% 0; } 55%, 100% { background-position: 180% 0; } }
+    @media (prefers-reduced-motion: reduce) { .bar__badge::after, .foot__brand-mark .bar__badge::after, .splash__mark::after { animation: none; display: none; } }
 
     /* header : le logo (avec son propre lettrage) remplace l'icône + le nom en texte */
-    .bar__brand .bar__badge { width: auto; height: 44px; background: none; border: none; box-shadow: none; border-radius: 8px; }
+    .bar__brand .bar__badge { width: auto; height: 44px; background: none; border: none; box-shadow: none; border-radius: 0; }
     .bar__brand .bar__badge img { width: auto; height: 100%; object-fit: contain; }
     .bar__brand .bar__brand-word { display: none; }
-
-    /* le logo client a un fond noir plein : on l'efface avec un blend-mode plutôt qu'un cadre visible */
-    .bar__brand .bar__badge img, .splash__mark img, .foot__brand-mark .bar__badge img { mix-blend-mode: screen; }
   
