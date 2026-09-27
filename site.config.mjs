@@ -32,6 +32,9 @@ export default {
     .bar__brand .bar__badge { width: auto; height: 44px; background: none; border: none; box-shadow: none; border-radius: 8px; }
     .bar__brand .bar__badge img { width: auto; height: 100%; object-fit: contain; }
     .bar__brand .bar__brand-word { display: none; }
+
+    /* le logo client a un fond noir plein : on l'efface avec un blend-mode plutôt qu'un cadre visible */
+    .bar__brand .bar__badge img, .splash__mark img, .foot__brand-mark .bar__badge img { mix-blend-mode: screen; }
   `,
   web3formsKey: 'A_COMPLETER_WEB3FORMS_KEY',
 
