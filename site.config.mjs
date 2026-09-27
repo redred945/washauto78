@@ -27,6 +27,11 @@ export default {
       mix-blend-mode: overlay; animation: shineSweep 2.6s ease-in-out infinite; animation-delay: 1.4s;
     }
     @media (prefers-reduced-motion: reduce) { .bar__badge::after, .foot__brand-mark .bar__badge::after { animation: none; display: none; } }
+
+    /* header : le logo (avec son propre lettrage) remplace l'icône + le nom en texte */
+    .bar__brand .bar__badge { width: auto; height: 44px; background: none; border: none; box-shadow: none; border-radius: 8px; }
+    .bar__brand .bar__badge img { width: auto; height: 100%; object-fit: contain; }
+    .bar__brand .bar__brand-word { display: none; }
   `,
   web3formsKey: 'A_COMPLETER_WEB3FORMS_KEY',
 
